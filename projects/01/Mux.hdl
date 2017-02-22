@@ -13,6 +13,13 @@ CHIP Mux {
     IN a, b, sel;
     OUT out;
 
-    PARTS:
+    PARTS: 
     // Put your code here:
+    And(a=b, b=sel, out=c);
+    Or(a=a, b=sel, out=d);
+    Not(in=sel, out=notsel);
+    Xor(a=c, b=notsel, out=x);
+    Or(a=d, b=sel, out=y);
+    Nand(a=x, b=y, out=ans);
+    Not(in=ans, out=out);
 }
